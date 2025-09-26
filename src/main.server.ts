@@ -1,7 +1,10 @@
+// main.server.ts
 import { bootstrapApplication } from '@angular/platform-browser';
-import { App } from './app/app';
 import { config } from './app/app.config.server';
+import { BootstrapContext } from '@angular/platform-browser'; // Import BootstrapContext
+import { App } from './app/app';
 
-const bootstrap = () => bootstrapApplication(App, config);
+// The bootstrap function must now accept a context argument
+const bootstrap = (context: BootstrapContext) => bootstrapApplication(App, config, context);
 
 export default bootstrap;
