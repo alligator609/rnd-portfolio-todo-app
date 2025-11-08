@@ -1,10 +1,65 @@
 <div class="todo-container mt-12 p-4 max-w-md mx-auto bg-white rounded shadow">
-    <h2>Todo List</h2>
-    <form >
-        <input type="text" name="todo" placeholder="Add a new task" required>
-        <button type="submit">Add</button>
-    </form>
-    <ul>
-        <li>Todo list here</li> 
+  <h2>Number Of Task: {{ dummyTodos.length }}</h2>
+
+  @if (dummyTodos.length > 0) {
+    <ul class="todo-list">
+      @for (todo of dummyTodos; track $index) {
+        <li
+          class="mb-3 p-3 border rounded flex justify-between items-start"
+          [class.opacity-60]="todo.completed"
+        >
+          <div>
+            <h3 class="font-semibold text-lg">{{$index +1}} {{ todo.title }}</h3>
+            <p class="text-sm text-gray-600">{{ todo.description }}</p>
+          </div>
+          <div class="flex flex-col items-end ml-4">
+            <label class="flex items-center text-sm mb-2">
+              <input
+                type="checkbox"
+                [checked]="todo.completed"
+                (change)="toggleComplete(todo.id)"
+                class="mr-2"
+              />
+              Completed
+            </label>
+            <button (click)="removeTodo(todo.id)" class="text-red-600 text-sm">
+              Remove
+            </button>
+          </div>
+        </li>
+      }
     </ul>
+  } @else {
+    <p class="text-sm text-gray-500">No Tasks yet. Add one above.</p>
+  }
 </div>
+
+
+<!-- <div class="add-todo-form mt-8 p-4 max-w-md mx-auto bg-white rounded shadow">
+  <h2 class="mb-4">Add New Todo</h2>
+  <form (submit)="addTodo()">
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1" for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        [(ngModel)]="newTodo.title"
+        name="title"
+        required
+        class="w-full p-2 border rounded"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium mb-1" for="description">Description</label>
+      <textarea
+        id="description"
+        [(ngModel)]="newTodo.description"
+        name="description"
+        class="w-full p-2 border rounded"
+      ></textarea>
+    </div>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
+      Add Todo
+    </button>
+  </form>
+</div> -->
