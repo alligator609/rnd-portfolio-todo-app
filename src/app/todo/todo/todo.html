@@ -54,6 +54,11 @@
       <span class="text-red-600 text-sm" *ngIf="todoForm.get('title')?.invalid && todoForm.get('title')?.touched">
         Title is required.
       </span>
+        @if (title?.hasError('minlength')) {
+        <span class="text-red-600 text-sm">
+          Title must be at least 3 characters long.
+        </span>
+       }
     </div>
     <div class="mb-4">
       <label class="block text-sm font-medium mb-1" for="description">Description</label>

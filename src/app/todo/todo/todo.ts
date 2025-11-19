@@ -74,5 +74,9 @@ export class Todo {
       this.removeTodo(id);
     }
   }
+
+    get title() {
+    return this.todoForm.get('title');
+  }
 }
 
