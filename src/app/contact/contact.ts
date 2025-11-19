@@ -7,7 +7,6 @@ import { AboutMe } from '../about-me/about-me';
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   standalone: true,
-  imports: [AboutMe]
 })
 export class Contact {
 
