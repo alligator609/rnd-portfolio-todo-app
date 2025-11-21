@@ -18,10 +18,20 @@ private readonly todosCollection = 'todos';
 async getTodos(): Promise<TodoInterface[]> {
   const snap = await getDocs(this.todosCollectionRef);
   
-  return snap.docs.map(d => ({
-    uid: d.id,                 // <-- Firestore document ID
-    ...d.data() as TodoInterface
-  }));
+  return snap.docs.map(d => {
+    const data = d.data() as TodoInterface & { createdAt?: any; updatedAt?: any };
+
+    return {
+      uid: d.id, // Firestore document ID
+      ...data,
+      createdAt: this.toDate(data.createdAt) ?? new Date(),
+      // keep updatedAt normalized too if you use it later
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ...(data as any).updatedAt !== undefined
+        ? { updatedAt: this.toDate((data as any).updatedAt) }
+        : {},
+    } as TodoInterface;
+  });
 }
   async create(payload: Omit<TodoInterface, 'uid' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const now = new Date().toISOString();
