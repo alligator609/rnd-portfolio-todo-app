@@ -4,10 +4,10 @@
     <div class="flex-1 bg-white rounded shadow p-4">
       <h2 class="mb-4 font-semibold text-lg">Tasks ({{ dummyTodos().length }})</h2>
 
-      <ng-container *ngIf="dummyTodos().length; else emptyState">
+      @if (dummyTodos().length) {
         <ul class="todo-list grid sm:grid-cols-2 gap-3">
+          @for (todo of dummyTodos(); track todo.id; let i = $index) {
           <li
-            *ngFor="let todo of dummyTodos(); let i = index"
             class="p-3 border rounded flex flex-col justify-between h-full"
             [class.opacity-60]="todo.completed"
           >
@@ -34,14 +34,13 @@
               </div>
             </div>
           </li>
+          }
         </ul>
-      </ng-container>
-
-      <ng-template #emptyState>
+      } @else {
         <div class="text-center text-gray-500 text-sm py-8">
           No tasks yet. Use the form on the right to add your first todo.
         </div>
-      </ng-template>
+      }
     </div>
 
     <!-- Right: Add / edit form -->
