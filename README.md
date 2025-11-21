@@ -1,59 +1,135 @@
-# Todo
+# Todo App (Angular + Firebase)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+This is a Todo application built with **Angular 20** and **Firebase Firestore** via **AngularFire**.
 
-## Development server
+---
 
-To start a local development server, run:
+## Prerequisites
+
+- Node.js (LTS recommended)
+- npm (comes with Node.js)
+- Angular CLI (globally):
+
+```bash
+npm install -g @angular/cli
+```
+
+---
+
+## 1. Install dependencies
+
+In the project root (where this `README.md` lives), run:
+
+```bash
+npm install
+```
+
+This installs Angular, AngularFire, Firebase and all other required packages from `package.json`.
+
+---
+
+## 2. Firebase setup
+
+This project uses **Firestore** to store todos.
+
+1. Go to [Firebase Console](https://console.firebase.google.com/) and create a project.
+2. Add a **Web app** to that project (</> icon) and register it.
+3. Enable **Firestore Database** in the Firebase console (Build → Firestore Database → Create database).
+4. Copy the Firebase web config you get after creating the web app. It looks like:
+
+   ```ts
+   const firebaseConfig = {
+     apiKey: '... ',
+     authDomain: '... ',
+     projectId: '... ',
+     storageBucket: '... ',
+     messagingSenderId: '... ',
+     appId: '... '
+   };
+   ```
+
+5. Open your environment file (for example):
+
+   - `src/environments/environment.ts`
+
+   and add your config:
+
+   ```ts
+   export const environment = {
+     production: false,
+     firebase: {
+       apiKey: '... ',
+       authDomain: '... ',
+       projectId: '... ',
+       storageBucket: '... ',
+       messagingSenderId: '... ',
+       appId: '... '
+     }
+   };
+   ```
+
+6. Make sure the Angular app bootstraps Firebase using `provideFirebaseApp` / `provideFirestore` with that `environment.firebase` configuration (this is already wired in the app module if you cloned this repo; you just need to fill in the keys).
+
+> **Note:** Never commit real production keys/secrets that should not be public. For local dev this config is usually fine to keep in the repo, but follow your team’s security rules.
+
+---
+
+## 3. Running the development server
+
+Start the dev server with:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open:
 
-## Code scaffolding
+- `http://localhost:4200/`
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The app will reload automatically when you change source files.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 4. Building for production
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To create a production build:
 
 ```bash
-ng build
+ng build --configuration production
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The output will be in the `dist/` folder, ready to be deployed to any static hosting service.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 5. Running unit tests
+
+To run unit tests with [Karma](https://karma-runner.github.io):
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 6. Optional: End-to-end tests
 
-```bash
-ng e2e
-```
+Angular CLI no longer ships with e2e by default. If you add a tool like Cypress or Playwright, follow its docs and then run the corresponding command (for example, `npx cypress open`).
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Useful Angular CLI commands
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Generate a component:
+
+  ```bash
+  ng generate component component-name
+  ```
+
+- Get help for generators:
+
+  ```bash
+  ng generate --help
+  ```
+
+For more on Angular CLI commands, see the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
