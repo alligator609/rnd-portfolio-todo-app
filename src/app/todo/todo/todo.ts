@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { TodoInterface } from '../../@models/todo-interface';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { TodoService } from '../../@services/todo.service';
   styleUrls: ['./todo.scss'],
 })
 export class Todo{
-  dummyTodos: TodoInterface[] = [];
+  dummyTodos = signal<TodoInterface[]>([]);
   constructor( private todoService :TodoService) {}
 
    todoForm = new FormGroup({
@@ -23,7 +23,7 @@ export class Todo{
 
   fetchTodos(){
     this.todoService.getTodos().then((todos: TodoInterface[])=>{
-    this.dummyTodos = todos;
+    this.dummyTodos.set(todos);
       console.log('Fetched todos:', this.dummyTodos);
     });
   }
@@ -35,7 +35,8 @@ export class Todo{
   addTodo() { 
    console.log(this.todoForm.value);
     if (this.todoForm.valid) {
-      const newId = this.dummyTodos.length > 0 ? Math.max(...this.dummyTodos.map(todo => todo.id)) + 1 : 1;
+      const currentTodos = this.dummyTodos();
+      const newId = currentTodos.length > 0 ? Math.max(...currentTodos.map(todo => todo.id)) + 1 : 1;
       const newTodo: TodoInterface = {
         id: newId,
         title: this.todoForm.value.title || '',
@@ -79,13 +80,13 @@ export class Todo{
     });
   }
   toggleComplete(id: number) {
-    const todo = this.dummyTodos.find(todo => todo.id === id);
-    if (todo) {
-      todo.completed = !todo.completed;
-    }
+    const updatedTodos = this.dummyTodos().map(todo =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
+    this.dummyTodos.set(updatedTodos);
   }
   editTodo(id: number) {
-    const todo = this.dummyTodos.find(todo => todo.id === id);
+    const todo = this.dummyTodos().find(todo => todo.id === id);
     if (todo) {
       this.todoForm.setValue({
         uid: todo.uid || '',

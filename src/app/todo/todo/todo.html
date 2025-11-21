@@ -1,56 +1,66 @@
-<div class="todo-container mt-12 p-4 max-w-md mx-auto bg-white rounded shadow">
-  <h2>Number Of Task: {{ dummyTodos.length }}</h2>
+<div class="mt-12 max-w-5xl mx-auto px-4">
+  <div class="flex flex-col lg:flex-row gap-6">
+    <!-- Left: Todo list -->
+    <div class="flex-1 bg-white rounded shadow p-4">
+      <h2 class="mb-4 font-semibold text-lg">Tasks ({{ dummyTodos().length }})</h2>
 
-<!-- @if (dummyTodos.length > 0) { -->
-  <ul class="todo-list">
-      <li  *ngFor="let todo of dummyTodos; let i = index"
-        class="mb-3 p-3 border rounded flex justify-between items-start"
-        [class.opacity-60]="todo.completed"
-      >
-        <div>
-          <h3 class="font-semibold text-lg">{{ i + 1 }} {{ todo.title }}</h3>
-          <p class="text-sm text-gray-600">{{ todo.description }}</p>
-          <!-- <p class="text-xs text-gray-400">Created At: {{ todo.createdAt |date }}</p> -->
+      <ng-container *ngIf="dummyTodos().length; else emptyState">
+        <ul class="todo-list grid sm:grid-cols-2 gap-3">
+          <li
+            *ngFor="let todo of dummyTodos(); let i = index"
+            class="p-3 border rounded flex flex-col justify-between h-full"
+            [class.opacity-60]="todo.completed"
+          >
+            <div>
+              <h3 class="font-semibold text-base mb-1">{{ i + 1 }}. {{ todo.title }}</h3>
+              <p class="text-sm text-gray-600 mb-2">{{ todo.description }}</p>
+              <!-- <p class="text-xs text-gray-400">Created At: {{ todo.createdAt |date }}</p> -->
+            </div>
+
+            <div class="flex items-center justify-between mt-2">
+              <label class="flex items-center text-xs sm:text-sm">
+                <input
+                  type="checkbox"
+                  [checked]="todo.completed"
+                  (change)="toggleComplete(todo.id)"
+                  class="mr-2"
+                />
+                Completed
+              </label>
+
+              <div class="flex gap-2">
+                <button (click)="removeTodo(todo)" class="text-red-600 text-xs sm:text-sm">Remove</button>
+                <button (click)="editTodo(todo.id)" class="text-blue-600 text-xs sm:text-sm">Edit</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #emptyState>
+        <div class="text-center text-gray-500 text-sm py-8">
+          No tasks yet. Use the form on the right to add your first todo.
         </div>
+      </ng-template>
+    </div>
 
-        <div class="flex flex-col items-end ml-4">
-          <label class="flex items-center text-sm mb-2">
-            <input
-              type="checkbox"
-              [checked]="todo.completed"
-              (change)="toggleComplete(todo.id)"
-              class="mr-2"
-            />
-            Completed
-          </label>
-
-          <button (click)="removeTodo(todo)" class="text-red-600 text-sm">Remove</button>
-          <button (click)="editTodo(todo.id)" class="text-blue-600 text-sm">Edit</button>
+    <!-- Right: Add / edit form -->
+    <div class="flex-1 bg-white rounded shadow p-4">
+      <h2 class="mb-4 font-semibold text-lg">Add / Edit Todo</h2>
+      <form [formGroup]="todoForm" class="space-y-4">
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1" for="title">Title</label>
+          <input id="title" type="text" formControlName="title" required class="w-full p-2 border rounded" />
+          <span class="text-red-600 text-sm" *ngIf="todoForm.get('title')?.invalid && todoForm.get('title')?.touched">Title is required.</span>
+          <span class="text-red-600 text-sm" *ngIf="title?.hasError('minlength')">Title must be at least 3 characters long.</span>
         </div>
-      </li>
-  </ul>
-<!-- } @else {
-  <ng-template #empty>
-    <p class="text-sm text-gray-500">No Tasks yet. Add one above.</p>
-  </ng-template>
-} -->
-</div>
-
-
-<div class="add-todo-form mt-8 p-4 max-w-md mx-auto bg-white rounded shadow">
-  <h2 class="mb-4">Add New Todo</h2>
-  <form [formGroup]="todoForm" class="space-y-4">
-    <div class="mb-4">
-      <label class="block text-sm font-medium mb-1" for="title">Title</label>
-      <input id="title" type="text" formControlName="title" required class="w-full p-2 border rounded" />
-      <span class="text-red-600 text-sm" *ngIf="todoForm.get('title')?.invalid && todoForm.get('title')?.touched">Title is required.</span>
-      <span class="text-red-600 text-sm" *ngIf="title?.hasError('minlength')">Title must be at least 3 characters long.</span>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-1" for="description">Description</label>
+          <textarea id="description" formControlName="description" class="w-full p-2 border rounded"></textarea>
+          <span class="text-red-600 text-sm" *ngIf="todoForm.get('description')?.invalid && todoForm.get('description')?.touched">Description is required.</span>
+        </div>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded w-full lg:w-auto" type="button" (click)="addTodo()">Save Todo</button>
+      </form>
     </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium mb-1" for="description">Description</label>
-      <textarea id="description" formControlName="description" class="w-full p-2 border rounded"></textarea>
-      <span class="text-red-600 text-sm" *ngIf="todoForm.get('description')?.invalid && todoForm.get('description')?.touched">Description is required.</span>
-    </div>
-    <button class="bg-blue-600 text-white px-4 py-2 rounded" type="button" (click)="addTodo()">Add Todo</button>
-  </form>
+  </div>
 </div>
