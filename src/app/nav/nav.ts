@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../@services/auth.service';
+import { UserStorageService } from '../@services/user-storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,4 +12,13 @@ import { RouterLink } from '@angular/router';
 })
 export class Nav {
 
+  isLoggedIn = false; 
+  constructor(private authService: AuthService,
+    private userStorage: UserStorageService
+  ) {
+    this.isLoggedIn = this.userStorage.isLoggedIn()  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
