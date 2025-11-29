@@ -85,15 +85,6 @@ import { AuthService } from '../../@services/auth.service';
             </button>
           </div>
 
-          <div class="flex items-center justify-center space-x-4">
-            <button
-              type="button"
-              (click)="loginAsAdmin()"
-              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
-            >
-              Admin Login
-            </button>
-          </div>
         </form>
       </div>
     </div>
@@ -115,15 +106,5 @@ export class LoginComponent {
       await this.authService.login(this.email, this.password, this.rememberMe);
     } catch {
     }
-  }
-
-  loginAsAdmin() {
-    this.email = 'admin@restaurant.com';
-    this.password = 'admin123';
-  }
-
-  loginAsKitchen() {
-    this.email = 'kitchen@restaurant.com';
-    this.password = 'kitchen123';
   }
 } 

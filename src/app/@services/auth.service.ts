@@ -41,15 +41,14 @@ export class AuthService {
         name: data.name,
         phone: data.phone,
         role,
-        restaurantName: data.restaurantName ?? null,
       });
 
-      // If kitchen user, fetch and save kitchen details
-        // if (role === 'admin') {
+      //If kitchen user, fetch and save kitchen details
+        if (role === 'admin') {
         await this.router.navigate(['/todo']);
-    //   } else {
-    //     await this.router.navigate(['/']);
-    //   }
+      } else {
+        await this.router.navigate(['/']);
+      }
     } catch (error: any) {
       console.error('Login error:', error);
       alert(error?.message ?? 'Failed to sign in. Please check your credentials.');
@@ -58,7 +57,7 @@ export class AuthService {
   }
 
   async register(payload: RegisterPayload): Promise<UserCredential> {
-    const { name, email, phone, password, role, restaurantName } = payload;
+    const { name, email, phone, password, role } = payload;
 
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
@@ -70,7 +69,6 @@ export class AuthService {
         email,
         phone,
         role,
-        restaurantName: role === 'kitchen' ? restaurantName ?? null : null,
         createdAt: new Date().toISOString()
       };
 
@@ -97,6 +95,6 @@ export class AuthService {
       console.error('Error during sign out', e);
     }
     this.userStorage.clearUser();
-    await this.router.navigate(['/auth/login']);
+    await this.router.navigate(['/']);
   }
 }

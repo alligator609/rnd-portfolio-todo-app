@@ -12,9 +12,6 @@ export const routes: Routes = [
 { path: 'contact', component: Contact },
 { path: 'projects', component: Projects },
 { path: 'todo', canActivate: [AuthGuard], loadChildren: () => import('./todo/todo-module').then(m => m.TodoModule) },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.routes').then(m => m.AUTH_ROUTES)
-  },
+{ path: 'auth',loadChildren: () => import('./auth/auth.routes').then(m => m.AUTH_ROUTES) },
 { path: '', redirectTo: 'home', pathMatch: 'full' }, // default route
 ];

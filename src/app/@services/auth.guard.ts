@@ -15,6 +15,7 @@ export class AuthGuard implements CanActivate {
     }
 
     // Not logged in: redirect to login
+    this.userStorage.clearUser();
     return this.router.parseUrl('/auth/login');
   }
 }

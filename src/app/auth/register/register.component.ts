@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../@services/auth.service';
 
 @Component({
@@ -109,12 +109,9 @@ export class RegisterComponent {
   role: string = 'user';
   logo: File | null = null;
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
-
-  onLogoChange(event: any) {
-    this.logo = event.target.files[0];
-  }
 
   async onSubmit() {
     if (this.password !== this.confirmPassword) {
@@ -139,6 +136,7 @@ export class RegisterComponent {
         password: this.password,
         role: this.role
       });
+      this.router.navigate(['/auth/login']);
     } catch {
     }
   }

@@ -4,7 +4,6 @@ export interface User {
     email: string;
     phone: string;
     role: string;
-    restaurantName: string | null;
  
 }
 ``

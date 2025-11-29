@@ -5,5 +5,4 @@ export interface RegisterPayload {
   phone: string;
   password: string;
   role: string;
-  restaurantName?: string | null;
 }
