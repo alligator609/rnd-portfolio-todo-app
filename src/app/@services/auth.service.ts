@@ -75,7 +75,7 @@ export class AuthService {
       await setDoc(doc(this.firestore, this.usersCollection, user.uid), userData);
 
       this.userStorage.saveUser(userData);
-
+      this.router.navigate(['/todo']);
       console.log('Firebase user created and profile saved:', user.uid);
       alert('Account created successfully!');
 
