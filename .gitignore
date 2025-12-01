@@ -43,3 +43,24 @@ Thumbs.db
 
 # Environment files
 environments
+
+# Firebase
+.firebase/
+.firebaserc
+# Local build cache
+.firebase/localcache
+# Emulators
+firebase-debug.log
+firebase-debug.*.log
+# Functions
+functions/node_modules/
+functions/lib/
+functions/.env.local
+functions/.env.*.local
+functions/.firebase/
+functions/.runtimeconfig.json
+functions/build/
+functions/dist/
+functions/lib/
+functions/.turbo/
+functions/.swc/
