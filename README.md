@@ -133,3 +133,11 @@ Angular CLI no longer ships with e2e by default. If you add a tool like Cypress 
   ```
 
 For more on Angular CLI commands, see the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
+
+
+# for build in production 
+
+```
+ng build --configuration production
+
+```
