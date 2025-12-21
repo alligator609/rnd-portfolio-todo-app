@@ -1,18 +1,57 @@
   <nav class="bg-white shadow-md fixed w-full top-0 z-10">
     <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
-      <h1 [routerLink]="''" class="text-xl font-bold text-indigo-600">MyPortfolio</h1>
-      <div class="space-x-6">
-        <a [routerLink]="'../home'" class="hover:text-indigo-600">Home</a>
-        <a [routerLink]="'../about'" class="hover:text-indigo-600">About</a>
-        <a [routerLink]="'../projects'" class="hover:text-indigo-600">Projects</a>
-        <a [routerLink]="'../contact'" class="hover:text-indigo-600">Contact</a>
+      <h1 [routerLink]="''" class="text-xl font-bold text-indigo-600 cursor-pointer hover:text-indigo-800 transition-colors">Zia's Portfolio</h1>
+      <div class="flex space-x-6">
+        <a 
+          [routerLink]="'../home'" 
+          routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+          Home
+        </a>
+        <a 
+          [routerLink]="'../about'" 
+          routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+          About
+        </a>
+        <a 
+          [routerLink]="'../projects'" 
+          routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+          Projects
+        </a>
+        <a 
+          [routerLink]="'../contact'" 
+          routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+          Contact
+        </a>
          @if (isLoggedIn) {
-          <a [routerLink]="'../todo'" class="hover:text-indigo-600">Todo</a>
-          <a (click)="logout()" class="hover:text-indigo-600">Logout</a>
+          <a 
+            [routerLink]="'../todo'" 
+            routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+            [routerLinkActiveOptions]="{exact: false}"
+            class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+            Todo
+          </a>
+          <a 
+            (click)="logout()" 
+            class="text-gray-700 hover:text-red-600 transition-colors cursor-pointer pb-1">
+            Logout
+          </a>
          }
          @else {
-        <!-- <a [routerLink]="'../auth/register'" class="hover:text-indigo-600">Register</a> -->
-         <a [routerLink]="'../auth/login'" class="hover:text-indigo-600">Login</a>
+         <a 
+           [routerLink]="'../auth/login'" 
+           routerLinkActive="text-indigo-600 font-semibold border-b-2 border-indigo-600"
+           [routerLinkActiveOptions]="{exact: false}"
+           class="text-gray-700 hover:text-indigo-600 transition-colors pb-1">
+           Login
+         </a>
          }
 
       </div>
