@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { User } from '../@models/user.interface';
 
 export interface StoredUser {
@@ -15,7 +16,11 @@ const USER_STORAGE_KEY = 'app_user';
   providedIn: 'root'
 })
 export class UserStorageService {
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
+
   saveUser(user: User): void {
+    if (!this.isBrowser) return;
     try {
       localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(user));
     } catch (e) {
@@ -24,6 +29,7 @@ export class UserStorageService {
   }
 
   getUser(): StoredUser | null {
+    if (!this.isBrowser) return null;
     try {
       const raw = localStorage.getItem(USER_STORAGE_KEY);
       if (!raw) return null;
@@ -35,6 +41,7 @@ export class UserStorageService {
   }
 
   clearUser(): void {
+    if (!this.isBrowser) return;
     try {
       localStorage.removeItem(USER_STORAGE_KEY);
     } catch (e) {
