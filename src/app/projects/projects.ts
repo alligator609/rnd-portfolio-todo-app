@@ -6,7 +6,7 @@ interface Project {
   description: string;
   techStack: string;
   website?: string;
-  category: 'web' | 'mobile';
+  category: 'web' | 'mobile' | 'saas';
 }
 
 @Component({
@@ -18,11 +18,32 @@ interface Project {
 export class Projects {
   webApplications: Project[] = [
     {
-      name: 'Masiba Travels',
+      "name": "QR-Dine",
+     "description": "QR-Dine is a comprehensive web application designed to streamline restaurant operations and enhance the dining experience. It enables contactless, app-free ordering through QR codes, while providing powerful management tools for restaurant owners and staff, targeting primarily B2B users with support for efficient customer interactions.",
+     "techStack": "Modern web technologies (likely including real-time features similar to SignalR, Angular/React-based frontend, backend APIs, database for menus/orders/analytics)",
+     "website": "qrdine.web.app",
+     "category": "saas"
+    },
+    {
+       "name": "Atlantic Automobiles",
+       "description": "Atlantic Automobiles is a comprehensive web application designed for auto repair shops and garages to manage end-to-end operations efficiently. It facilitates customer and vehicle management, product/service cataloging, invoicing for repairs and sales, stock/inventory tracking, employee attendance and task management, work progress monitoring, expense/purchase handling, and reporting. The system supports recurring vehicle services with auto-reminders, loyalty points for customers, WhatsApp marketing/integration for notifications and communication, multi-language support, and project/progress tracking with percentage completion. ",
+       "techStack": "Dotnet, Angular, MongoDB, SignalR etc.",
+       "website": "AtlanticAutomobiles",
+       "category": "web"
+    },
+    {
+      name: 'Maaisha Tours & Travels Sdn Bhd',
       description: 'The ticketing web application is designed to facilitate the purchase and management of tickets, targeting both B2B and B2C users. The web application is developed using the .NET framework and Angular framework, making use of their powerful features and tools to provide a seamless user experience.',
       techStack: 'Dotnet, Angular, MongoDB, SignalR etc.',
-      website: 'Masibatravels',
+      website: 'MaaishaTravels',
       category: 'web'
+    },
+    {
+      "name": "Hishab Boss",
+      "description": "Hishab Boss is a modern Point of Sale (POS) web application built for retail businesses, auto parts shops, garages, and service-oriented outlets. It enables fast and accurate sales processing, product management, customer invoicing, inventory tracking, payment handling, discounts, returns, and detailed sales reporting. The system supports barcode scanning, multiple payment methods, real-time stock updates, customer loyalty points, and multi-user access with role-based permissions (Admin, Cashier/Employee).",
+      "techStack": "Dotnet, Angular, MongoDB, SignalR etc.",
+      "website": "HishabBoss",
+      "category": "web"
     },
     {
       name: 'Techno Travel',

@@ -10,26 +10,27 @@ import { CommonModule } from '@angular/common';
 })
 export class Home {
   skills = [
-    { name: '.NET', icon: '🔷' },
-    { name: 'Angular', icon: '🅰️' },
-    { name: 'IONIC', icon: '📱' },
-    { name: 'Laravel', icon: '🔶' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'TypeScript', icon: '💙' }
+    { name: '.NET', asset:'assets/net.png' },
+    { name: 'Angular', asset:'assets/angular.png' },
+    { name: 'IONIC', asset:'assets/ionic.png' },
+    { name: 'Laravel', asset:'assets/laravel.png' },
+    { name: 'MongoDB', asset:'assets/mongodb.svg' },
+    { name: 'Docker', asset:'assets/docker.png' },
+    { name: 'AWS', asset:'assets/aws.png' },
+    { name: 'TypeScript', asset:'assets/typescript.png' },
+    { name: 'NestJS', asset:'assets/nest.svg' },
   ];
 
   stats = [
     { value: '6+', label: 'Years Experience' },
     { value: '50+', label: 'Projects Completed' },
-    { value: '2', label: 'Current Companies' },
+    { value: '1', label: 'Current Companies' },
     { value: '100%', label: 'Client Satisfaction' }
   ];
 
   featuredProjects = [
     {
-      name: 'Masiba Travels',
+      name: 'Maaisha Tours & Travels Sdn Bhd',
       description: 'B2B & B2C ticketing platform with .NET and Angular',
       tech: ['.NET', 'Angular', 'MongoDB'],
       link: '/projects'

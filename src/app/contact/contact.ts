@@ -13,11 +13,11 @@ import { emailjsConfig } from '../@services/emailjs.config';
 })
 export class Contact {
   contactInfo = {
-    email: 'ziauddin10@gmail.com',
-    phone: 'Holding# 88 Vill, Road# 3 Jamal Bahuddar Rd',
-    location: 'Raoshan, Chittagong, Bangladesh',
+    email: 'zia.ete10@gmail.com',
+    phone: '+8801670502610',
+    location: 'Boshundhara R/A, Chattogram, Bangladesh',
     github: 'https://github.com/alligator609',
-    linkedin: 'https://linkedin.com/in/ziauddinahmed',
+    linkedin: 'https://www.linkedin.com/in/zia-uddin-ahmed',
     twitter: 'https://twitter.com/alligator609'
   };
 

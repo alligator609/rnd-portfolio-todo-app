@@ -11,10 +11,10 @@ export class About {
   profile = {
     name: 'Zia Uddin Ahmed',
     title: 'Software Engineer | .NET, Angular, IONIC, Laravel',
-    location: 'Chittagong, Bangladesh',
-    email: 'ziauddin10@gmail.com',
+    location: 'Chattogram, Bangladesh',
+    email: 'zia.ete10@gmail.com',
     github: 'https://github.com/alligator609',
-    linkedin: 'https://linkedin.com/in/ziauddinahmed',
+    linkedin: 'https://www.linkedin.com/in/zia-uddin-ahmed',
     twitter: '@alligator609'
   };
 
@@ -23,7 +23,7 @@ export class About {
       title: 'SR. Software Engineer (Remote)',
       company: 'Grand Ocean Sdn. Bhd',
       location: 'Kuala Lumpur, Malaysia',
-      period: 'Nov 2024 - Continuing',
+      period: 'November 2024 - Continuing',
       description: 'Multinational travel agency, Head Office based in Malaysia',
       responsibilities: [
         'Developed and maintained web applications using .NET, Angular, and IONIC',
@@ -34,7 +34,19 @@ export class About {
       title: 'Software Engineer (Remote)',
       company: 'Panacea PLT',
       location: 'Kuala Lumpur, Malaysia',
-      period: 'April 2021 - Continuing',
+      period: 'April 2021 - October 2024',
+      description: 'Malaysia-based firm offering IT services for travel agencies',
+      responsibilities: [
+        'Developed multinational projects for travel agencies',
+        'Worked with .NET, Angular, MongoDB, Redis for cross-platform mobile app development',
+        'Integrated third-party technologies for efficient project management'
+      ]
+    },
+    {
+      title: 'Research Assistant',
+      company: 'International Islamic University Chattogram',
+      location: 'Chattogram, Bangladesh',
+      period: 'September 2020 - March 2021',
       description: 'Malaysia-based firm offering IT services for travel agencies',
       responsibilities: [
         'Developed multinational projects for travel agencies',
@@ -44,8 +56,8 @@ export class About {
     },
     {
       title: 'Junior Web Developer',
-      company: 'Amaq Pharma People Foundation',
-      location: 'Chittagong, Bangladesh',
+      company: 'Alhajj Shamsul Hoque Foundation',
+      location: 'Chattogram, Bangladesh',
       period: 'August 2018 - August 2019',
       description: 'Non-profit organization (NPO)',
       responsibilities: [
@@ -60,14 +72,14 @@ export class About {
   education = [
     {
       degree: 'Master of Science in Information and Communication Engineering',
-      institution: 'Chittagong University of Engineering & Technology',
-      location: 'Chittagong, Bangladesh',
+      institution: 'Chattogram University of Engineering & Technology',
+      location: 'Chattogram, Bangladesh',
       period: 'Pursuing'
     },
     {
       degree: 'Bachelor of Science in Electronic and Telecommunication Engineering',
-      institution: 'International Islamic University Chittagong',
-      location: 'Chittagong, Bangladesh',
+      institution: 'International Islamic University Chattogram',
+      location: 'Chattogram, Bangladesh',
       period: 'Mar 2014 - Nov 2018'
     }
   ];
@@ -75,12 +87,12 @@ export class About {
   professionalTraining = [
     {
       title: 'Android and IOS App Development',
-      institution: 'Venue: Chittagong',
+      institution: 'Venue: Chattogram',
       description: 'Hybrid App Development using Ionic and Capacitor'
     },
     {
       title: 'Cisco Certified Network Associate (CCNA)',
-      institution: 'Venue: Chittagong',
+      institution: 'Venue: Chattogram',
       description: 'Organized by: Genuine Computer Learning Center'
     }
   ];
