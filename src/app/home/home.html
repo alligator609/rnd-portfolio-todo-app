@@ -11,8 +11,8 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
       <div class="mb-8">
         <div class="w-40 h-40 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 p-1 shadow-2xl">
-          <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-6xl font-bold">
-            Z
+          <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center text-6xl font-bold overflow-hidden">
+            <img src="assets/zia.jpg" alt="Zia Uddin Ahmed" class="w-full h-full object-cover rounded-full">
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
           @for (skill of skills; track skill.name) {
             <div class="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center group">
               <div class="w-20 h-20 mx-auto mb-4 rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center group-hover:from-indigo-100 group-hover:to-purple-100 transition-colors">
-                <img [src]="skill.asset" alt="{{ skill.name }}" class="w-12 h-12">
+                <img [src]="skill.asset" alt="{{ skill.name }}" class="max-w-16 h-12">
               </div>
               <div class="font-semibold text-gray-800 text-sm">{{ skill.name }}</div>
             </div>
